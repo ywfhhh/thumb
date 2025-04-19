@@ -119,7 +119,7 @@ public class ThumbServiceImpl extends ServiceImpl<ThumbMapper, Thumb> implements
         RLock lock = redissonClient.getLock(key);
         boolean locked = false;
         try {
-            locked = lock.tryLock(5, 30, TimeUnit.SECONDS);
+            locked = lock.tryLock(5, TimeUnit.SECONDS);
             if (!locked) {
                 throw new ThumbException(ErrorCode.OPERATION_ERROR, "获取点赞分布式锁失败!");
             }
