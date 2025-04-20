@@ -75,7 +75,7 @@ public class ThumbServiceImpl extends ServiceImpl<ThumbMapper, Thumb> implements
                 thumb.setBlogId(blogId);
                 boolean success = this.save(thumb);
                 if (success)
-                    redisTemplate.opsForHash().put(ThumbConstant.USER_THUMB_KEY_PREFIX + loginUser.getId().toString(), blogId.toString(), thumb.getId().toString());
+                    redisTemplate.opsForHash().put(ThumbConstant.USER_THUMB_KEY_PREFIX + loginUser.getId().toString(), blogId.toString(), thumb.getId());
                 return success;
             });
         } catch (InterruptedException e) {
@@ -100,7 +100,7 @@ public class ThumbServiceImpl extends ServiceImpl<ThumbMapper, Thumb> implements
             }
             return transactionTemplate.execute(status -> {
                 Long blogId = doThumbRequest.getBlogId();
-                Long thumbId = (Long) redisTemplate.opsForHash().get(ThumbConstant.USER_THUMB_KEY_PREFIX + loginUser.getId().toString(), blogId.toString());
+                Long thumbId = ((Long) redisTemplate.opsForHash().get(ThumbConstant.USER_THUMB_KEY_PREFIX + loginUser.getId().toString(), blogId.toString()));
                 if (thumbId == null) {
                     throw new ThumbException(ErrorCode.OPERATION_ERROR, "用户未点赞");
                 }
