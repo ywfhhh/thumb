@@ -10,6 +10,13 @@ spring:
     url: jdbc:mysql://localhost:3306/thumb
     username: root
     password: 123123
+  #  redis config
+  data:
+    redis:
+      database: 0
+      host: localhost
+      timeout: 5000
+      port: 6379
   # redisson config
   redisson:
     database: 0
