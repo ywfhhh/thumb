@@ -27,7 +27,7 @@ import org.springframework.transaction.support.TransactionTemplate;
 
 import java.util.concurrent.TimeUnit;
 
-@Service
+@Service("thumbServiceDB")
 @Slf4j
 @RequiredArgsConstructor // 自动生成构造函数进行依赖注入
 public class ThumbServiceImpl extends ServiceImpl<ThumbMapper, Thumb> implements ThumbService {
