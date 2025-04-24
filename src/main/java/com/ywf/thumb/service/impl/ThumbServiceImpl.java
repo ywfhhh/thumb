@@ -1,7 +1,5 @@
 package com.ywf.thumb.service.impl;
 
-import cn.hutool.core.util.ObjectUtil;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.ywf.thumb.common.ErrorCode;
 import com.ywf.thumb.constant.ThumbConstant;
@@ -15,7 +13,6 @@ import com.ywf.thumb.model.dto.DoThumbRequest;
 import com.ywf.thumb.service.BlogService;
 import com.ywf.thumb.service.ThumbService;
 import com.ywf.thumb.service.UserService;
-import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -41,7 +38,6 @@ public class ThumbServiceImpl extends ServiceImpl<ThumbMapper, Thumb> implements
     private final RedissonClient redissonClient;
 
     private final RedisTemplate<String, Object> redisTemplate;
-    private final UserController userController;
 
     @Override
     public Boolean doThumb(DoThumbRequest doThumbRequest, HttpServletRequest request) {

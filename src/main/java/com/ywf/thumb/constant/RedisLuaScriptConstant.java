@@ -3,7 +3,7 @@ package com.ywf.thumb.constant;
 import org.springframework.data.redis.core.script.DefaultRedisScript;
 import org.springframework.data.redis.core.script.RedisScript;
 
-public class RedisLuaScriptConstant {
+public interface RedisLuaScriptConstant {
 
     /**
      * 点赞 Lua 脚本
